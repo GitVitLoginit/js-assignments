@@ -55,6 +55,7 @@ function getStringLength(value) {
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
+   // return  'Hello, ${firstName} ${lastName}!';
     return `Hello, ${firstName} ${lastName}!`;
 }
 
@@ -69,7 +70,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-    throw new Error('Not implemented');
+return value.substr(7,value.length-8);
 }
 
 
@@ -84,7 +85,7 @@ function extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-    throw new Error('Not implemented');
+    return value.substr(0,1);
 }
 
 /**
@@ -99,7 +100,7 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-    throw new Error('Not implemented');
+    return value.trim();
 }
 
 /**
@@ -114,7 +115,12 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-    throw new Error('Not implemented');
+    var res='';
+    var i;
+    for (i=1;i<=count;i++){
+res=res+value;
+    }
+    return res;
 }
 
 /**
@@ -130,7 +136,9 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-    throw new Error('Not implemented');
+    return str.replace(value,'');
+   //var ind= str.indexOf(value);
+
 }
 
 /**
@@ -145,7 +153,8 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-    throw new Error('Not implemented');
+     var str1= str.replace('<','');
+     return str1.replace('>','');
 }
 
 
@@ -160,7 +169,7 @@ function unbracketTag(str) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-    throw new Error('Not implemented');
+   return str.toUpperCase();
 }
 
 /**
@@ -174,7 +183,7 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    throw new Error('Not implemented');
+    return str.split(';');
 }
 
 /**
@@ -201,10 +210,79 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-    throw new Error('Not implemented');
+    var res='';
+    //var times1 = (height-2)/2+(height-1)%2;
+var buf=width;
+    width=height;
+    height=buf;
+  for (var i=1;i<=width;i++)
+   {
+/*if (((i!=1)&&(i!=width))){
+    while (times1>0)
+{
+        i++;
+    times1--;
+}
+}*/
+
+        for (var j=1;j<=height;j++)
+   {
+if ((i==1)&&(j==1)) 
+{
+res=res+'┌';
+}
+
+if ((i==1)&&(j==height)) 
+{
+res=res+'┐';
+}
+if ((i==width)&&(j==1)) 
+{
+res=res+'└';
+}
+
+if ((i==width)&&(j==height)) 
+{
+res=res+'┘';
+}
+
+if ((i==1)&&((j!=1)&&(j!=height))) 
+{
+res=res+'─';
+}
+
+if ((i==width)&&((j!=1)&&(j!=height))) 
+{
+res=res+'─';
+}
+
+if ((j==1)&&((i!=1)&&(i!=width))) 
+{
+res=res+'│';
+}
+
+if ((j==height)&&((i!=1)&&(i!=width))) 
+{
+res=res+'│';
+}
+
+if ((j!=1)&&(i!=1)&&(i!=width)&&(j!=height)) 
+{
+res=res+' ';
 }
 
 
+   }
+   res=res+'\n';
+
+
+
+   }
+
+   return res;
+}
+
+ 
 /**
  * Закодировать указанную строку при помощи ROT13 шифрования (*)
  * See details:  https://en.wikipedia.org/wiki/ROT13
@@ -221,7 +299,27 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    throw new Error('Not implemented');
+    var count=str.length;
+    var i;
+    var res='';
+    for (i=0;i<count;i++){
+if (((str.charCodeAt(i)>=78)&&(str.charCodeAt(i)<=90))||((str.charCodeAt(i)>=110)&&(str.charCodeAt(i)<=122)))
+{
+res=res+(String.fromCharCode(str.charCodeAt((i))-13));
+
+
+//78 -90      110-  122
+}
+else if (((str.charCodeAt(i)>=65)&&(str.charCodeAt(i)<=77))||((str.charCodeAt(i)>=97)&&(str.charCodeAt(i)<=109)))
+{
+res=res+(String.fromCharCode(str.charCodeAt((i))+13));
+}
+else 
+res=res+(String.fromCharCode(str.charCodeAt((i))));
+    }
+
+
+    return res;
 }
 
 /**
@@ -238,7 +336,8 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    throw new Error('Not implemented');
+  if (typeof value=="string") return true
+    else return false;
 }
 
 
