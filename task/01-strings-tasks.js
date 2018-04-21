@@ -336,7 +336,7 @@ res=res+(String.fromCharCode(str.charCodeAt((i))));
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  if (typeof value=="string") return true
+  if (typeof value=="string" ||  value instanceof String) return true
     else return false;
 }
 
@@ -366,7 +366,50 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    throw new Error('Not implemented');
+    let res = 0;
+    switch (value[0]) {
+        case '2':
+            res += 1;
+            break;
+        case '3':
+            res += 2;
+            break;
+        case '4':
+            res += 3;
+            break;
+        case '5':
+            res += 4;
+            break;
+        case '6':
+            res += 5;
+            break;
+        case '7':
+            res += 6;
+            break;
+        case '8':
+            res += 7;
+            break;
+        case '9':
+            res += 8;
+            break;
+        case '1':
+            res += 9;
+            break;
+        case 'J':
+            res += 10;
+            break;
+       case 'Q':
+            res += 11;
+            break;
+        case 'K':
+            res += 12;
+            break;  
+    } 
+    if (value.includes('♦')) { res += 13; }
+    if (value.includes('♥')) { res += 26; }
+    if (value.includes('♠')) { res += 39; }
+
+    return res;
 }
 
 
