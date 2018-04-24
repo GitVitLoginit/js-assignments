@@ -341,6 +341,7 @@ function getPositivesCount(arr) {
 function sortDigitNamesByNumericOrder(arr) {
    let dict = { "zero": 0, "one" : 1, "two" : 2, "three" : 3, "four" : 4, "five" : 5, "six" : 6, "seven" : 7, "eight": 8, "nine": 9 };
   return arr.sort((a, b) => dict[a] - dict[b]);
+  
 }
 
 /**
@@ -359,6 +360,7 @@ function getItemsSum(arr) {
  	var sum;
 	sum=0;
   arr.map((elem) => {sum+=elem; return 0});
+
   return sum;
 }
 
@@ -378,6 +380,7 @@ function getFalsyValuesCount(arr) {
  var count1;
 	count1=0;
   arr.map((elem) => {if (!Boolean(elem)) count1++;return 0}); //получится если elem false то считаем его
+
   return count1;
 }
 
@@ -399,6 +402,7 @@ function findAllOccurences(arr, item) {
  var count1;
 	count1=0;
   arr.map((elem) => {if (elem===item) count1++;return 0}); //получится если elem false то считаем его
+
   return count1;
 }
 
@@ -415,6 +419,7 @@ function findAllOccurences(arr, item) {
  */
 function toStringList(arr) {
   return arr.join(",");
+
 }
 
 
@@ -443,6 +448,7 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
+
  return arr.sort((a, b) => (a.country == b.country)? a.city.localeCompare(b.city) : a.country.localeCompare(b.country))
 }
 
@@ -468,6 +474,7 @@ function getIdentityMatrix(n) {
     return Array.from({ length: n }, (_, i) => {
     	       let row = new Array(n).fill(0);
        row[i] = 1;
+
        return row;
    });
 }
@@ -489,6 +496,7 @@ function getIntervalArray(start, end) {
 var mas=[];
 
 mas.length=end-start+1;
+
 start--;
 mas.fill(0,0);
 return mas.map((elem)=>elem=start=start+1);
@@ -513,6 +521,7 @@ function distinct(arr) {
 
 
   arr.filter((elem)=>{if (mas.indexOf(elem)==-1) {mas[masind]=elem; masind++;return true;} else return false});
+
  return mas;
 }
 
@@ -549,6 +558,7 @@ function distinct(arr) {
 function group(array, keySelector, valueSelector) {
    var map=new Map();
    array.map(function(name){map.set(keySelector(name),(map.get(keySelector(name))===undefined ? []:map.get(keySelector(name))).concat([valueSelector(name)]));});
+
    return map; //если ниче не было создаем пустой массив если что то есть то присоединяем
 }
 
@@ -566,6 +576,7 @@ function group(array, keySelector, valueSelector) {
  */
 function selectMany(arr, childrenSelector) {
      return arr.reduce((prev, curr) => prev.concat(childrenSelector(curr)), []);
+
 }
 
 /**
@@ -586,6 +597,7 @@ function getElementByIndexes(arr, indexes) {
         arr = arr[elem];
     });
     return arr;
+
 }
 
 
@@ -613,6 +625,7 @@ function swapHeadAndTail(arr) {
     let head = arr.splice(0, half_length);
     let tail = arr.splice(len % 2 ? 1 : 0);
     return tail.concat(arr).concat(head);
+
 }
 
 
